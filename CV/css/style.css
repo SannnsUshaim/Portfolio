@@ -1,0 +1,169 @@
+.container {
+    background-color: #fff;
+    margin: 2rem;
+    box-shadow: 0 0 6px #464646;
+}
+
+/* left side section */
+.left-side {
+    background-color: #344158;
+    color: #fff;
+    font-family: 'Arimo', sans-serif;
+}
+
+.left-side .title {
+    text-align: left;
+    font-size: 2rem;
+    margin-left: 4rem;
+}
+
+.left-side .desc {
+    text-align: justify;
+    margin-left: 4rem;
+    margin-right: 2rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+}
+
+.left-side .desc .icon {
+    width: 7px;
+    margin-right: 1rem;
+    fill: #fff;
+}
+
+.left-side .desc.year {
+    margin-bottom: 0;
+}
+
+.left-side .desc.company {
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+.left-side .desc.language {
+    font-size: 1.4rem;
+}
+
+/* right side section */
+.right-side {
+    font-family: 'Poppins', sans-serif;
+    color: #344158;
+}
+
+.right-side .name{
+    color: #344158;
+    text-align: left;
+    margin-left: 2.5rem;
+    font-size: 4rem;
+}
+
+.right-side .name.middle{ 
+    margin-top: 3.5rem; 
+    margin-bottom: 0; 
+    color: #344158;
+}
+
+.right-side .name.last {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 700;
+    font-size: 4.3rem;
+}
+
+.right-side .position {
+    margin-top: 0;
+    margin-left: 2.5rem;
+    font-size: 1.9rem;
+}
+
+.right-side .icon {
+    display: flex;
+    margin-left: 2.5rem;
+    margin-top: 1rem;
+}
+
+.right-side .icon .info-icon {
+    fill: #344158;
+    color: #fff;
+}
+
+.right-side .icon .info-icon.mail {
+    margin-left: 1rem;
+}
+
+.right-side .title, .right-side .company, .right-side .job, .right-side .desc, .right-side .degree, .right-side .university, .right-side .person-name, .right-side .person-work, .right-side .person-phone, .right-side .person-email {
+    margin-left: 2.5rem;
+    font-family: 'Arimo';
+    color: #344158;
+}
+
+.right-side .title {
+    margin-top: 1.2rem;
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 3rem;
+}
+
+.right-side .company {
+    font-size: 1.17rem;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.right-side .job {
+    font-size: 1.17rem;
+    margin-bottom: 0;
+}
+
+.right-side .desc-job {
+    color: #767676;
+    text-align: justify;
+    margin-right: 10rem;
+    font-size: 1.17rem;
+    margin-bottom: 3rem;
+}
+
+.right-side .circle {
+    width: 7px;
+    fill: #767676;
+    margin-left: 2.5rem;
+}
+
+.right-side .degree {
+    margin-top: 1rem;
+    margin-bottom: 0;
+    font-size: 1.3rem;
+}
+
+.right-side .university {
+    color: #000;
+    font-size: 1.4rem;
+    margin-bottom: 0;
+}
+
+.right-side .desc-degree {
+    color: #767676;
+    text-align: justify;
+    margin-right: 9rem;
+    font-size: 1.17rem;
+}
+
+.right-side .person-name {
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin-bottom: 0;
+}
+
+.right-side .person-work {
+    font-size: 1.3rem;
+    margin-bottom: 0.7rem;
+}
+
+.right-side .person-phone {
+    margin-bottom: 0;
+    font-size: 1rem;
+}
+
+.right-side .person-email {
+    font-size: 1rem;
+}
