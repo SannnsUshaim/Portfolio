@@ -6,6 +6,7 @@
     <title>Portfolio | MIU</title>
     <link rel="stylesheet" href="css/style.css" />
     <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   </head>
   <body>
     <a class="balik" href="#home"><i data-feather="triangle"></i></a>
@@ -34,9 +35,16 @@
       </main>
     </section>
 
-    <section class="about" id="about">
-      <h2>About <span>Me</span>.</h2>
-      <p>
+    <section class="about" id="about" style="overflow: hidden">
+      <h2 data-aos="fade-right" data-aos-duration="700" data-aos-offset="580">
+        About <span>Me</span>.
+      </h2>
+      <p
+        data-aos="fade-left"
+        data-aos-duration="1000"
+        data-aos-offset="150"
+        data-aos-delay="300"
+      >
         I'm a technology and automotive enthusiast who is also a student. I'm
         passionate about learning new things and always looking for new ways to
         challenge myself. I'm also a creative thinker and enjoy coming up with
@@ -46,10 +54,18 @@
       </p>
     </section>
 
-    <section class="project" id="project">
-      <h2>My <span>Project</span>.</h2>
+    <section class="project" id="project" style="overflow: hidden">
+      <h2 data-aos="fade-down" data-aos-duration="800" data-aos-offset="600">
+        My <span>Project</span>.
+      </h2>
       <div class="row">
-        <div class="col">
+        <div
+          class="col"
+          data-aos="fade-right"
+          data-aos-duration="600"
+          data-aos-offset="300"
+          data-aos-delay="300"
+        >
           <img
             width="670px"
             style="border-radius: 0.5rem"
@@ -57,7 +73,13 @@
             alt="project dari github"
           />
         </div>
-        <div class="col">
+        <div
+          class="col"
+          data-aos="fade-left"
+          data-aos-duration="700"
+          data-aos-offset="300"
+          data-aos-delay="300"
+        >
           <p>
             I have my coding project at my github page. You can see it at
             <a target="_blank" href="https://www.github.com/SannnsUshaim"
@@ -69,14 +91,26 @@
         </div>
       </div>
       <div class="row">
-        <div class="col">
+        <div
+          class="col"
+          data-aos="fade-right"
+          data-aos-duration="600"
+          data-aos-offset="300"
+          data-aos-delay="300"
+        >
           <p>
             I have a lot of design projects. Only for school assignments, not
             for sale yet, but I will try my best. This is one of my projects,
             where the other design files are corrupted.
           </p>
         </div>
-        <div class="col">
+        <div
+          class="col"
+          data-aos="fade-left"
+          data-aos-duration="700"
+          data-aos-offset="300"
+          data-aos-delay="300"
+        >
           <img
             width="670px"
             style="border-radius: 0.5rem"
@@ -86,12 +120,18 @@
         </div>
       </div>
       <div class="row end">
-        <div class="col">
+        <div
+          class="col"
+          data-aos="fade-right"
+          data-aos-duration="600"
+          data-aos-offset="300"
+          data-aos-delay="300"
+        >
           <video
             onclick="toggleMute()"
             id="video"
             width="670px"
-            style="border-radius: 0.5rem; box-shadow: 0 0 3px #000;"
+            style="border-radius: 0.5rem; box-shadow: 0 0 3px #000"
             loop
             autoplay
             muted
@@ -99,7 +139,13 @@
             <source src="video/animasi.mp4" type="video/mp4" />
           </video>
         </div>
-        <div class="col video-desc">
+        <div
+          class="col video-desc"
+          data-aos="fade-left"
+          data-aos-duration="700"
+          data-aos-offset="300"
+          data-aos-delay="300"
+        >
           <p>
             I also have a project in the form of animation, although it's still
             not good yet, but I will try my best. I will only include this,
@@ -111,71 +157,211 @@
       </div>
     </section>
 
-    <section class="education" id="education">
-      <h2>My <span>Education</span>.</h2>
-      <h3>Levels</h3>
-      <div class="sd">
+    <section class="education" id="education" style="overflow: hidden">
+      <h2 data-aos="fade-down" data-aos-duration="800" data-aos-offset="500">
+        My <span>Education</span>.
+      </h2>
+      <h3
+        data-aos="fade-up"
+        data-aos-duration="1000"
+        data-aos-offset="220"
+        data-aos-delay="300"
+      >
+        Levels
+      </h3>
+      <div
+        class="sd"
+        data-aos="fade-right"
+        data-aos-duration="1500"
+        data-aos-offset="250"
+        data-aos-delay="500"
+      >
         <p class="kelas">Elementary =</p>
         <p><span>..</span>SDIT Nurul Hayat (2013 - 2016)</p>
         <p><span>..</span>SDIT Al-Istiqomah II (2016 - 2019)</p>
       </div>
-      <div class="smp">
+      <div
+        class="smp"
+        data-aos="fade-right"
+        data-aos-duration="1500"
+        data-aos-offset="250"
+        data-aos-delay="500"
+      >
         <p class="kelas">Middle =</p>
         <p><span>..</span>MTsS Al-Adzkar (Pesantren Modern) (2019 - 2022)</p>
       </div>
-      <div class="smk">
+      <div
+        class="smk"
+        data-aos="fade-right"
+        data-aos-duration="1500"
+        data-aos-offset="250"
+        data-aos-delay="500"
+      >
         <p class="kelas">Vocation =</p>
         <p><span>..</span>SMK Negeri 4 Kota Tangerang (2022 - 2025)</p>
       </div>
     </section>
-    <section class="hobbies" id="hobbies">
-      <h2>My <span>Hobbies</span> and <span>Interest</span>.</h2>
+    <section class="hobbies" id="hobbies" style="overflow: hidden">
+      <h2 data-aos="fade-down" data-aos-duration="800" data-aos-offset="500">
+        My <span>Hobbies</span> and <span>Interest</span>.
+      </h2>
       <div class="card">
-        <i class="icon" data-feather="monitor"></i>
-        <i class="icon" data-feather="tv"></i>
-        <i class="icon" data-feather="figma"></i>
+        <div
+          class="con"
+          data-aos="fade-right"
+          data-aos-duration="1200"
+          data-aos-offset="200"
+          data-aos-delay="300"
+        >
+          <i class="icon" data-feather="monitor"></i>
+        </div>
+        <div
+          class="con"
+          data-aos="fade-right"
+          data-aos-duration="1200"
+          data-aos-offset="200"
+          data-aos-delay="500"
+        >
+          <i class="icon" data-feather="tv"></i>
+        </div>
+        <div
+          class="con"
+          data-aos="fade-right"
+          data-aos-duration="1200"
+          data-aos-offset="200"
+          data-aos-delay="700"
+        >
+          <i class="icon" data-feather="figma"></i>
+        </div>
       </div>
       <div class="card-text">
-        <p><span>Coding</span></p>
-        <p><span>Watch Movies</span></p>
-        <p><span>Design</span></p>
+        <p
+          data-aos="fade-right"
+          data-aos-duration="1200"
+          data-aos-offset="100"
+          data-aos-delay="300"
+        >
+          <span>Coding</span>
+        </p>
+        <p
+          data-aos="fade-right"
+          data-aos-duration="1200"
+          data-aos-offset="100"
+          data-aos-delay="500"
+        >
+          <span>Watch Movies</span>
+        </p>
+        <p
+          data-aos="fade-right"
+          data-aos-duration="1200"
+          data-aos-offset="100"
+          data-aos-delay="500"
+        >
+          <span>Design</span>
+        </p>
       </div>
     </section>
-    <section class="contact" id="contact">
-      <h2>My <span>Contact</span>.</h2>
+    <section class="contact" id="contact" style="overflow: hidden">
+      <h2 data-aos="fade-down" data-aos-duration="800" data-aos-offset="500">
+        My <span>Contact</span>.
+      </h2>
       <div class="row">
         <div class="col o">
-          <a class="icon" target="_blank" href=""
+          <a
+            class="icon"
+            data-aos="fade-right"
+            data-aos-duration="1200"
+            data-aos-offset="200"
+            data-aos-delay="100"
+            target="_blank"
+            href=""
             ><i class="icon" data-feather="mail"></i></a
           ><br />
-          <a class="icon" target="_blank" href=""
+          <a
+            class="icon"
+            data-aos="fade-right"
+            data-aos-duration="1200"
+            data-aos-offset="100"
+            data-aos-delay="100"
+            target="_blank"
+            href=""
             ><i class="icon" data-feather="phone"></i></a
           ><br />
           <a
             class="icon"
             target="_blank"
+            data-aos="fade-right"
+            data-aos-duration="1200"
+            data-aos-offset="100"
+            data-aos-delay="100"
             href="https://www.instagram.com/ihsan_ushaim"
             ><i class="icon" data-feather="instagram"></i></a
           ><br />
           <a
             class="icon"
             target="_blank"
+            data-aos="fade-right"
+            data-aos-duration="1200"
+            data-aos-offset="100"
+            data-aos-delay="100"
             href="https://www.github.com/SannnsUshaim"
             ><i class="icon" data-feather="github"></i
           ></a>
         </div>
         <div class="col">
-          <p class="desc">ushaimihsan@gmail.com</p>
-          <p class="desc">+62851-5643-5830</p>
-          <p class="desc">ihsan_ushaim</p>
-          <p class="desc">SannnsUshaim</p>
+          <p
+            data-aos="fade-left"
+            data-aos-duration="1200"
+            data-aos-offset="200"
+            data-aos-delay="190"
+            class="desc"
+          >
+            ushaimihsan@gmail.com
+          </p>
+          <p
+            data-aos="fade-left"
+            data-aos-duration="1200"
+            data-aos-offset="100"
+            data-aos-delay="190"
+            class="desc"
+          >
+            +62851-5643-5830
+          </p>
+          <p
+            data-aos="fade-left"
+            data-aos-duration="1200"
+            data-aos-offset="100"
+            data-aos-delay="190"
+            class="desc"
+          >
+            ihsan_ushaim
+          </p>
+          <p
+            data-aos="fade-left"
+            data-aos-duration="1200"
+            data-aos-offset="100"
+            data-aos-delay="190"
+            class="desc"
+          >
+            SannnsUshaim
+          </p>
         </div>
       </div>
     </section>
-    <section class="cv">
+    <section class="cv" style="overflow: hidden">
       <div class="cv-item">
-        <h1>This is My CV <span>(Curriculum Vitae)</span>.</h1>
-        <a class="cta-cv" href="CV/index.html">Click Here</a>
+        <h1 data-aos="fade-down" data-aos-duration="800" data-aos-offset="150">
+          This is My CV <span>(Curriculum Vitae)</span>.
+        </h1>
+        <a
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-offset="80"
+          data-aos-delay="100"
+          class="cta-cv"
+          href="CV/index.html"
+          >Click Here</a
+        >
       </div>
     </section>
     <footer class="footer">
@@ -232,6 +418,12 @@
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        once:true
+      });
+    </script>
     <script>
       var typed = new Typed(".nama", {
         strings: [
