@@ -1,3 +1,10 @@
+:root {
+    --primary: #12486B;
+    --secondary: #419197;
+    --third: #78D6C6;
+    --fourth: #F5FCCD;
+}
+
 .container {
     background-color: #fff;
     margin: 2rem;
@@ -6,8 +13,8 @@
 
 /* left side section */
 .left-side {
-    background-color: #344158;
-    color: #fff;
+    background-color: var(--primary);
+    color: var(--fourth);
     font-family: 'Arimo', sans-serif;
 }
 
@@ -47,7 +54,8 @@
 /* right side section */
 .right-side {
     font-family: 'Poppins', sans-serif;
-    color: #344158;
+    background-color: var(--fourth);
+    color: var(--primary);
 }
 
 .right-side .name{
@@ -165,5 +173,9 @@
 }
 
 .right-side .person-email {
+    font-size: 1rem;
+}
+
+.right-side .desc-info{
     font-size: 1rem;
 }
