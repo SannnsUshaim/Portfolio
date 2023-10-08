@@ -189,7 +189,64 @@ a.balik.active {
   padding: 4rem 10rem;
   color: white;
 }
+/* experience section */
+.experience {
+  background-color: #000;
+  color: #fff;
+  min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.experience-content {
+  display: block;
+}
+
+.title-experience h2 {
+  font-size: 2.7rem;
+}
+
+.title-experience h2 span {
+  color: #f1c40f;
+}
+
+.desc-experience {
+  padding: 1rem;
+}
+
+.desc-experience p {
+  padding: 1rem 0 1rem 0;
+}
+/* expertise section */
+.expertise {
+  background-color: #000;
+  color: #fff;
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.expertise-content {
+  display: block;
+}
+
+.title-expertise h2 {
+  font-size: 2.7rem;
+  text-align: center;
+}
+
+.title-expertise h2 span {
+  color: #f1c40f;
+}
+
+.desc-expertise {
+  padding: 1rem;
+}
+.desc-expertise p{
+  padding: 1rem;
+}
 /* project section */
 .project {
   min-height: 135vh;
@@ -245,8 +302,11 @@ a.balik.active {
 }
 /* education section */
 .education {
-  background-color: #000;
-  min-height: 120vh;
+  min-height: 110vh;
+  background-image: url("../img/background-education.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .education h2 {
@@ -444,7 +504,7 @@ a.balik.active {
   padding: 0;
 }
 
-.footer .row .col.context p{
+.footer .row .col.context p {
   font-weight: 400;
 }
 
@@ -467,15 +527,15 @@ a.balik.active {
   margin: 0 2rem 0 0;
 }
 
-.footer .row .col.link .list{
+.footer .row .col.link .list {
   list-style: none;
 }
 
-.list-item  {
+.list-item {
   margin: 10px 0 0 0;
 }
 
-.list a{
+.list a {
   color: #fff;
   font-weight: 500;
   font-size: 1.1rem;
@@ -483,7 +543,7 @@ a.balik.active {
   margin: 2rem 0 0 0;
 }
 
-.list a:hover{
+.list a:hover {
   color: #f1c40f;
 }
 
