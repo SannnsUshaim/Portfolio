@@ -1,38 +1,25 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Variants } from "framer-motion";
-import Tilt from "react-parallax-tilt";
-import { Menu, X, Code, Briefcase, GraduationCap, Mail } from "lucide-react";
+import { Menu, X, Briefcase, GraduationCap, XIcon, Globe } from "lucide-react";
+import { projects } from "./data/Project";
+import { clsx } from "clsx";
+import Card from "./components/Card";
+import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 
-const projects = [
-  {
-    title: "Logistics Administrative Web App",
-    type: "WORK PROJECT",
-    stack: ["React", "Node.js", "REST API", "MySQL"],
-    desc: "An internal web-based system for managing logistics operations, shipment tracking, and administrative reporting.",
-  },
-  {
-    title: "Digital Wedding Invitation Web App",
-    type: "CLIENT PROJECT",
-    stack: ["React", "TypeScript", "Firebase", "Tailwind", "Vite"],
-    desc: "A fully featured platform with token-based guest access, RSVP system, digital gift notes, and a WhatsApp link generator.",
-  },
-  {
-    title: "TuDu - To Do List Web Application",
-    type: "FINAL SCHOOL PROJECT",
-    stack: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
-    desc: "A full-featured task management web application for creating, editing, and prioritizing tasks.",
-  },
-  {
-    title: "RPLCashier - School Cashier Web App",
-    type: "SCHOOL PROJECT",
-    stack: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
-    desc: "A web-based point-of-sale cashier system designed for a school canteen, featuring product management and daily sales reporting.",
-  },
-];
+interface ProjectType {
+  title: string;
+  type: string;
+  tech: string[];
+  desc: string;
+  source_code?: string;
+  demo?: string;
+  images?: string[];
+}
 
 export default function Portfolio() {
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<ProjectType>();
 
   const scrollToSection = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -56,6 +43,15 @@ export default function Portfolio() {
     },
   };
 
+  const fadeIn: Variants = {
+    hidden: { opacity: 0, x: -40 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { type: "spring", stiffness: 80, damping: 20 },
+    },
+  };
+
   const staggerContainer: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -65,9 +61,122 @@ export default function Portfolio() {
   };
 
   return (
-    <div className="min-h-screen bg-dark text-bonewhite font-sans selection:bg-bravered/30">
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-dark/70 backdrop-blur-lg border-b border-cyan/10 shadow-lg transition-all duration-300">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <div className="min-h-screen bg-dark text-bonewhite font-sans selection:bg-bravered/30 overflow-x-hidden">
+      {/* Project Details Modal */}
+      {selectedProject && (
+        <div
+          onClick={() => setSelectedProject(undefined)}
+          className="fixed w-full h-screen bg-black/30 z-49"
+        />
+      )}
+      <div
+        className={clsx(
+          "fixed flex flex-col p-8 h-screen max-h-screen overflow-y-auto sm:w-2/5 w-full bg-linear-to-tr from-bonewhite to-white right-0 transition-transform duration-1000 shadow-2xl z-50 space-y-8",
+          !selectedProject && "translate-x-[100rem]",
+        )}
+      >
+        <div className="flex w-full text-dark justify-end">
+          <XIcon
+            size={24}
+            onClick={() => setSelectedProject(undefined)}
+            className="cursor-pointer"
+          />
+        </div>
+        <h1 className="text-3xl font-bold text-dark capitalize">
+          Project Details
+        </h1>
+        <p className="text-oceanblue text-base font-medium leading-relaxed tracking-wide uppercase">
+          ___ {selectedProject?.type}
+        </p>
+        <div className="flex flex-col gap-1">
+          <h2 className="text-2xl font-regular text-dark capitalize">
+            Project Name
+          </h2>
+          <h3 className="text-2xl font-bold text-dark capitalize">
+            {selectedProject?.title}
+          </h3>
+        </div>
+        <div className="flex flex-col gap-1">
+          <p className="text-dark text-lg leading-relaxed capitalize">
+            Description
+          </p>
+          <p className="text-dark/90 text-base leading-relaxed">
+            {selectedProject?.desc}
+          </p>
+        </div>
+        <div className="flex flex-col gap-1">
+          <p className="text-dark text-lg leading-relaxed capitalize">
+            Tech Stack
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {selectedProject?.tech.map((tech, index) => (
+              <span
+                key={index}
+                className="text-xs px-2 py-1 bg-oceanblue text-bonewhite rounded-md border border-oceanblue/30"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+        <div className="flex flex-col gap-1">
+          <p className="text-dark text-lg leading-relaxed capitalize">
+            Source Code
+          </p>
+          {selectedProject?.source_code ? (
+            <a
+              href={selectedProject.source_code}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-oceanblue"
+            >
+              <p className=" font-medium text-lg">Github</p>
+              <FaGithub size={24} />
+            </a>
+          ) : (
+            <p className="text-dark/90 text-base leading-relaxed capitalize">
+              Source code not available.
+            </p>
+          )}
+        </div>
+        <div className="flex flex-col gap-1">
+          <p className="text-dark text-lg leading-relaxed capitalize">Demo</p>
+          {selectedProject?.demo ? (
+            <a
+              href={selectedProject.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2"
+            >
+              <p className="text-oceanblue font-medium text-lg">Demo</p>
+              <Globe size={24} className="text-oceanblue" />
+            </a>
+          ) : (
+            <p className="text-dark/90 text-base leading-relaxed capitalize">
+              demo not available.
+            </p>
+          )}
+        </div>
+        <div className="border-t border-dark/50"></div>
+        <h2 className="text-xl text-center font-medium text-dark capitalize">
+          Preview
+        </h2>
+        <div className="flex flex-col gap-5 justify-center items-center">
+          {selectedProject?.images ? (
+            selectedProject?.images?.map((project, index) => (
+              <img key={index} src={project} className="" />
+            ))
+          ) : (
+            <p className="text-dark text-2xl capitalize leading-relaxed">
+              Preview Not Available
+            </p>
+          )}
+        </div>
+      </div>
+
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-30 bg-dark/40 backdrop-blur-lg transition-all duration-300">
+        <div className="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -137,15 +246,26 @@ export default function Portfolio() {
           className="flex-1 space-y-6"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: false, margin: "-40px" }}
           variants={staggerContainer}
         >
+          <motion.h2
+            variants={fadeIn}
+            className="text-4xl lg:text-3xl font-bold uppercase text-bravered tracking-wider"
+          >
+            web developer
+          </motion.h2>
           <motion.h1
             variants={fadeUp}
             className="text-5xl md:text-6xl font-bold leading-tight"
           >
-            Hi, I'm <br />
-            <span className="text-cyan">Muhammad Ihsan Ushaim </span>
+            <span className="text-cyan">
+              Muhammad{" "}
+              <span className="hover:text-bonewhite relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-1 after:bg-bravered after:transition-all after:duration-300 hover:after:w-full">
+                Ihsan
+              </span>{" "}
+              Ushaim
+            </span>
           </motion.h1>
           <motion.p
             variants={fadeUp}
@@ -174,53 +294,7 @@ export default function Portfolio() {
         </motion.div>
 
         {/* Tilt Card */}
-        <motion.div
-          className="flex-1 w-full max-w-md perspective-1000"
-          initial={{ opacity: 0, rotateY: -15, scale: 0.9 }}
-          whileInView={{ opacity: 1, rotateY: 0, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ type: "spring", duration: 1.5, bounce: 0.4 }}
-        >
-          <Tilt
-            tiltMaxAngleX={12}
-            tiltMaxAngleY={12}
-            scale={1.04}
-            transitionSpeed={1500}
-            className="relative rounded-2xl bg-linear-to-br from-oceanblue/40 to-dark border border-cyan/20 p-8 shadow-2xl overflow-hidden backdrop-blur-xl"
-          >
-            <div className="absolute top-0 right-0 w-40 h-40 bg-bravered/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
-            <div className="absolute bottom-0 left-0 w-40 h-40 bg-cyan/10 rounded-full blur-3xl -ml-10 -mb-10"></div>
-
-            <div className="relative z-10 flex flex-col items-center text-center space-y-4">
-              <div className="w-24 h-24 rounded-full bg-dark border-2 border-bravered flex items-center justify-center mb-2 shadow-inner overflow-hidden">
-                <Code size={40} className="text-cyan" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold text-bonewhite">
-                  Muhammad Ihsan Ushaim
-                </h3>
-                <p className="text-cyan font-medium mt-1">
-                  Fullstack Developer
-                </p>
-              </div>
-              <div className="w-full h-px bg-oceanblue/50 my-4"></div>
-              <div className="grid grid-cols-2 gap-4 w-full">
-                <div className="flex flex-col items-center bg-dark/50 p-3 rounded-lg border border-cyan/10">
-                  <span className="text-2xl font-bold text-bravered">1+</span>
-                  <span className="text-xs text-cyan uppercase tracking-wider mt-1">
-                    Years Exp
-                  </span>
-                </div>
-                <div className="flex flex-col items-center bg-oceanblue/50 p-3 rounded-lg border border-cyan/10">
-                  <span className="text-2xl font-bold text-cyan">5+</span>
-                  <span className="text-xs text-cyan uppercase tracking-wider mt-1">
-                    Projects
-                  </span>
-                </div>
-              </div>
-            </div>
-          </Tilt>
-        </motion.div>
+        <Card />
       </section>
 
       {/* EDUCATION SECTION */}
@@ -232,7 +306,7 @@ export default function Portfolio() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: false, margin: "-40px" }}
             variants={staggerContainer}
             className="mb-16 text-center"
           >
@@ -254,41 +328,49 @@ export default function Portfolio() {
                 period: "Present",
                 title: "Informatics Engineering (Undergraduate)",
                 institution: "UIN Syarif Hidayatullah Jakarta",
-                desc: "Second-semester student building a strong academic foundation in software engineering, interdisciplinary thinking, and algorithmic problem solving.",
+                desc: "A student building a strong academic foundation in software engineering, interdisciplinary thinking, and algorithmic problem solving.",
                 icon: <GraduationCap size={20} />,
               },
               {
                 period: "Vocational High School",
                 title: "Rekayasa Perangkat Lunak (Software Engineering)",
-                institution: "SMK",
+                institution: "SMKN 4 Tangerang",
                 desc: "Established the foundation in web development, database design, and software lifecycle by building real-world school applications.",
                 icon: <Briefcase size={20} />,
               },
-            ].map((edu, idx) => (
+            ].map((edu, index) => (
               <motion.div
-                key={idx}
+                key={index}
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ type: "spring", stiffness: 60, delay: idx * 0.2 }}
+                viewport={{ once: false, margin: "-30px" }}
+                transition={{
+                  type: "spring",
+                  stiffness: 60,
+                  delay: index * 0.2,
+                }}
                 className="relative"
               >
-                <div className="absolute -left-13.25 top-0 p-2 bg-dark border-2 border-bravered rounded-full text-cyan">
+                <div className="absolute -left-14 top-0 p-3 bg-dark border-2 border-bravered rounded-full text-cyan">
                   {edu.icon}
                 </div>
-                <div className="bg-oceanblue/10 border border-oceanblue/30 rounded-xl p-6 hover:border-bravered/50 transition-colors">
-                  <span className="text-xs font-bold text-bravered mb-2 block tracking-wider">
-                    {edu.period}
-                  </span>
-                  <h3 className="text-xl font-semibold text-bonewhite">
-                    {edu.title}
-                  </h3>
-                  <p className="text-cyan font-medium mb-3">
-                    {edu.institution}
-                  </p>
-                  <p className="text-bonewhite/70 text-sm leading-relaxed">
-                    {edu.desc}
-                  </p>
+                <div className="relative bg-linear-to-br from-oceanblue/5 to-oceanblue/30 border border-oceanblue/30 rounded-xl p-6 hover:border-bravered/50 transition-colors overflow-hidden">
+                  <div className="absolute bg-bravered/15 h-34 w-28 top-0 right-0 rounded-full blur-2xl -mr-6 -mt-10 -rotate-45"></div>
+                  <div className="absolute bg-cyan/20 h-28 w-28 bottom-0 left-0 rounded-full blur-3xl -ml-4 -mb-7"></div>
+                  <div className="relative z-10">
+                    <span className="text-xs font-bold text-bravered mb-2 block tracking-wider">
+                      {edu.period}
+                    </span>
+                    <h3 className="text-xl font-semibold text-bonewhite">
+                      {edu.title}
+                    </h3>
+                    <p className="text-cyan font-medium mb-3">
+                      {edu.institution}
+                    </p>
+                    <p className="text-bonewhite/70 text-sm leading-relaxed">
+                      {edu.desc}
+                    </p>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -305,7 +387,7 @@ export default function Portfolio() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: false, margin: "-20px" }}
             variants={staggerContainer}
             className="mb-16"
           >
@@ -324,15 +406,16 @@ export default function Portfolio() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: false, margin: "-80px" }}
             variants={staggerContainer}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            {projects.map((project, idx) => (
+            {projects.map((project, index) => (
               <motion.div
-                key={idx}
+                key={index}
                 variants={fadeUp}
-                className="bg-oceanblue/10 border border-oceanblue/30 rounded-xl p-6 hover:bg-oceanblue/20 hover:-translate-y-2 transition-all duration-300 group flex flex-col"
+                className="bg-oceanblue/10 border border-oceanblue/30 rounded-xl p-6 hover:bg-oceanblue/20 hover:-translate-y-2 transition-all duration-300 group flex flex-col hover:cursor-pointer"
+                onClick={() => setSelectedProject(project)}
               >
                 <div className="text-xs font-bold text-bravered mb-3 tracking-wider">
                   {project.type}
@@ -340,11 +423,11 @@ export default function Portfolio() {
                 <h3 className="text-xl font-semibold mb-3 group-hover:text-cyan transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-sm text-bonewhite/70 mb-6 flex-grow">
+                <p className="text-sm text-bonewhite/70 mb-6 grow">
                   {project.desc}
                 </p>
                 <div className="flex flex-wrap gap-2 mt-auto">
-                  {project.stack.map((tech, i) => (
+                  {project.tech.map((tech, i) => (
                     <span
                       key={i}
                       className="text-xs px-2 py-1 bg-oceanblue text-cyan rounded-md border border-oceanblue/30"
@@ -368,9 +451,9 @@ export default function Portfolio() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false, margin: "-80px" }}
             transition={{ type: "spring", stiffness: 80 }}
-            className="bg-gradient-to-br from-oceanblue/20 to-dark border border-oceanblue/40 rounded-3xl p-10 md:p-16"
+            className="bg-linear-to-br from-oceanblue/20 to-dark border border-oceanblue/40 rounded-3xl p-10 md:p-16"
           >
             <h2 className="text-2xl md:text-3xl font-bold mb-6 text-bonewhite">
               Wanna Collaborate or Just Say Hi?
@@ -384,7 +467,7 @@ export default function Portfolio() {
                 href="mailto:ushaimihsan@gmail.com?subject=Hello%20Ihsan!%20Let's%20Connect"
                 className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-bravered hover:bg-bravered/90 text-bonewhite rounded-full font-medium transition-all"
               >
-                <Mail size={20} />
+                <FaEnvelope size={24} />
                 Send an Email
               </a>
               <a
@@ -393,17 +476,7 @@ export default function Portfolio() {
                 rel="noreferrer"
                 className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-oceanblue border border-oceanblue/30 hover:bg-oceanblue/20 text-cyan rounded-full font-medium transition-all"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="30px"
-                  height="30px"
-                  viewBox="0 0 256 256"
-                >
-                  <g className="ft5dvn">
-                    <rect className="zdw9do"></rect>
-                    <path className="c0haom"></path>
-                  </g>
-                </svg>
+                <FaGithub size={24} />
                 GitHub
               </a>
               <a
@@ -412,17 +485,7 @@ export default function Portfolio() {
                 rel="noreferrer"
                 className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-oceanblue border border-oceanblue/30 hover:bg-oceanblue/20 text-cyan rounded-full font-medium transition-all"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="30px"
-                  height="30px"
-                  viewBox="0 0 256 256"
-                >
-                  <g className="ft5dvn">
-                    <rect className="v5546j"></rect>
-                    <path className="dzgjwc"></path>
-                  </g>
-                </svg>
+                <FaLinkedin size={24} />
                 LinkedIn
               </a>
             </div>
